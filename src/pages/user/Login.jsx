@@ -7,9 +7,9 @@ const Login = () => {
 
   const handleSubmit = async(event)=> {
     event.preventDefault()
-  } 
+  
   try {
-    const response = fetch("http://localhost:5000/user/login", {
+    const response = await fetch("http://localhost:5000/user/login", {
       method: "POST",
       headers: {
         "Accept": "application/json",
@@ -20,13 +20,14 @@ const Login = () => {
         password: password
       })
     })
-    const jsonResponse = response.json()
+    const jsonResponse = await response.json()
+    localStorage.setItem("token", jsonResponse.token)
     alert(jsonResponse.message)
   }
   catch(err){
     alert("Failed to login..")
   }
-
+  } 
 
   return (
     <div>
