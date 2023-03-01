@@ -11,7 +11,7 @@ const Create = () => {
   const handleSubmit = async(event)=> {
     event.preventDefault()
     try {
-      const response = await fetch("http://localhost:5000/item/create", {
+      const response = await fetch("https://tomokon-shoppingsite.onrender.com/item/create", {
         method: "POST",
         headers: {
           "Accept": "application/json",

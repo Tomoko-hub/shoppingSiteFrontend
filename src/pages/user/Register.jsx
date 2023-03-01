@@ -9,7 +9,7 @@ const Register = () => {
   const handleSubmit =async(event)=> {
     event.preventDefault()
     try{
-      const response = await fetch("http://localhost:5000/user/register", {
+      const response = await fetch("https://tomokon-shoppingsite.onrender.com/user/register", {
         method: "POST",
         headers: {
           "Accept": "application/json",

@@ -15,7 +15,7 @@ const Delete = () => {
 
   useEffect(()=> {
     const getSingleItem = async()=> {
-      const response = await fetch(`http://localhost:5000/item/update/${params.id}`)
+      const response = await fetch(`https://tomokon-shoppingsite.onrender.com/item/update/${params.id}`)
       const jsonResponse = await response.json()
       
       setTitle(jsonResponse.singleItem.title)
@@ -30,7 +30,7 @@ const Delete = () => {
   const handleSubmit = async(event)=> {
     event.preventDefault()
     try {
-      const response = await fetch(`http://localhost:5000/item/delete/${params.id}`, {
+      const response = await fetch(`https://tomokon-shoppingsite.onrender.com/item/delete/${params.id}`, {
         method: "DELETE",
         headers: {
           "Accept": "application/json",
