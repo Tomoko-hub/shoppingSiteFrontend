@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const ReadAll = () => {
     const [ allItems, setAllItems ] = useState()
@@ -17,15 +18,17 @@ const ReadAll = () => {
     <div>
         <h1>Read All</h1>
         {allItems && allItems.allItems.map(item =>
-            <div key={item._id}>
+            <Link to={`/item/${item._id}`} key={item._id}>
                 <img 
                     src={require(`../../images${item.image}`)}
                     alt="item">
                 </img>
-                <h2>{item.price}</h2>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-            </div>
+                <div>
+                    <h2>{item.price}</h2>
+                    <h3>{item.title}</h3>
+                    <p>{item.description.substring(0,80)}...</p>
+                </div>
+            </Link>
             )}
     </div>
   )
