@@ -16,20 +16,21 @@ const ReadAll = () => {
 
   return (
     <div>
-        <h1>Read All</h1>
+        <div className='grid-container-in'>
         {allItems && allItems.allItems.map(item =>
             <Link to={`/item/${item._id}`} key={item._id}>
                 <img 
                     src={require(`../../images${item.image}`)}
                     alt="item">
                 </img>
-                <div>
-                    <h2>{item.price}</h2>
+                <div className='texts-area'>
+                    <h2>{item.price}€</h2>
                     <h3>{item.title}</h3>
                     <p>{item.description.substring(0,80)}...</p>
                 </div>
             </Link>
             )}
+            </div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 const ReadSingle = () => {
 
@@ -15,21 +15,17 @@ const ReadSingle = () => {
     const getSingleItem = async()=> {
       const response = await fetch(`http://localhost:5000/item/${params.id}`)
       const jsonResponse = await response.json()
-      
-      setSingleItem({
-        id: jsonResponse.singleItem._id,
-        title: jsonResponse.singleItem.title,
-        image: jsonResponse.singleItem.image,
-        price: jsonResponse.singleItem.price,
-        description: jsonResponse.singleItem.description
-      })
+        setTitle(jsonResponse.singleItem.title)
+        setImage(jsonResponse.singleItem.image)
+        setPrice(jsonResponse.singleItem.price)
+        setDescription(jsonResponse.singleItem.description)
     }
     getSingleItem()
   },[params.id])
 
 
   return (
-    <div>
+    <div className='grid-container-si'>
       <div>
         {image && <img src={require(`../../images${image}`)} alt="item" />}
       </div>
@@ -38,6 +34,10 @@ const ReadSingle = () => {
         <h2>{price}€</h2>
         <hr />
         <p>{description}</p>
+      </div>
+      <div>
+        <Link to={`/item/update/${params.id}`}>Edit item</Link>
+        <Link to={`/item/delete/${params.id}`}>Delete item</Link>
       </div>
     </div>
   )
